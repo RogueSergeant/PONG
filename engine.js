@@ -186,8 +186,8 @@ function startGame(type, mode) {
     if (gameEnded) return; // completely ignore if the game is over
 	
 	// use key or keyCode depending on what's supported
-	if (e.key) var keyId = e.key.toLowerCase(), up = 'up', down = 'down', w = 'w', s = 's', p = 'p';
-	else if (e.keyCode) var keyId = e.keyCode, up = 38, down = 40, w = 87, s = 83, p = 80;
+	if (e.key) var keyId = e.key.toLowerCase().replace(/arrow/, ''), up = 'up', down = 'down', w = 'w', s = 's', p = 'p';
+	else if (e.keyCode) var keyId = e.which || e.keyCode, up = 38, down = 40, w = 87, s = 83, p = 80;
 	else return domAlert('Error','Sorry, no key identifiers are supported.','<div class="button" onclick="window.location.reload();">OK</div>');
   
     if (!paused && keyId == p) pause(), pD();
