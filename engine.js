@@ -125,18 +125,16 @@ function startGame(type, mode) {
 		
 		
 		/* -- START paddle hitboxes -- */
-		hitbox(0, 10, 'top-r_X10_Y10', 'top-l_X10_Y10'); 
-		hitbox(10, 20, 'top-r_X10_Y8', 'top-l_X10_Y8');
-		hitbox(20, 30, 'top-r_X10_Y6', 'top-l_X10_Y6');
-		hitbox(30, 40, 'top-r_X10_Y4', 'top-l_X10_Y4');
-		hitbox(40, 50, 'top-r_X10_Y2', 'top-l_X10_Y2');
-		hitbox(50, 60, 'top-r_X10_Y1', 'top-l_X10_Y1');
-		hitbox(60, 70, 'down-r_X10_Y1', 'down-l_X10_Y1');
-		hitbox(70, 80, 'down-r_X10_Y2', 'down-l_X10_Y2');
-		hitbox(80, 90, 'down-r_X10_Y4', 'down-l_X10_Y4');
-		hitbox(90, 100, 'down-r_X10_Y6', 'down-l_X10_Y6');
-		hitbox(100, 110, 'down-r_X10_Y8', 'down-l_X10_Y8');
-		hitbox(110, 120, 'down-r_X10_Y10', 'down-l_X10_Y10');
+		hitbox(0, 7, 'top-r_X10_Y5', 'top-l_X10_Y5'); 
+		hitbox(7, 14, 'top-r_X10_Y4', 'top-l_X10_Y4');
+		hitbox(14, 21, 'top-r_X10_Y3', 'top-l_X10_Y3');
+		hitbox(21, 28, 'top-r_X10_Y2', 'top-l_X10_Y2');
+		hitbox(28, 35, 'top-r_X10_Y1', 'top-l_X10_Y1');
+		hitbox(35, 42, 'down-r_X10_Y1', 'down-l_X10_Y1');
+		hitbox(42, 49, 'down-r_X10_Y2', 'down-l_X10_Y2');
+		hitbox(49, 56, 'down-r_X10_Y3', 'down-l_X10_Y3');
+		hitbox(56, 63, 'down-r_X10_Y4', 'down-l_X10_Y4');
+		hitbox(63, 70, 'down-r_X10_Y5', 'down-l_X10_Y5');
 		/* -- END paddle hitboxes -- */
 		
 		// ball directions
@@ -159,8 +157,8 @@ function startGame(type, mode) {
 	        while (incX < 16) {
 			  // we subtract 15 from the top of our paddles as the ball is 15 tall
 			  // this will allow us to set a somewhat accurate and larger hitbox
-	          if (bY == getY(player1.el) - 15 + incY && bX == getX(player1.el) + incX) hit(dir1); // player1
-			  if (bY == getY(player2.el) - 15 + incY && bX == getX(player2.el) - incX) hit(dir2); // player2
+	          if (bY == getY(player1.el) - 10 + incY && bX == getX(player1.el) + incX) hit(dir1); // player1
+			  if (bY == getY(player2.el) - 10 + incY && bX == getX(player2.el) - incX) hit(dir2); // player2
 		      incX++
 	        }
 	        incY++
