@@ -274,7 +274,7 @@ function startGame(type, mode) {
       movement(o, n);
 	  if (t=='inc') {
 	    n++;
-		if (n > 70) t = 'dec'
+		if (n > 50) t = 'dec'
 	  } else if (t=='dec') {
 	    n--;
 		if (n < 1) t = 'inc'
