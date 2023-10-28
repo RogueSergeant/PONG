@@ -205,20 +205,20 @@ input.box {
 /* User interface */
 #UI {
   color:#FFF;
-  font-size:64px;
+  font-size:32px;
   text-shadow:1px 1px 1px #000, 1px 1px 1px #000;
 }
 
 .scorep1 {
   position:absolute;
   top:0;
-  left:40%;
+  left:35%;
 }
 
 .scorep2 {
   position:absolute;
   top:0;
-  right:40%;
+  right:35%;
 }
 
 .line {
