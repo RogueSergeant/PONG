@@ -179,8 +179,8 @@ function startGame(type, mode) {
 	
 	document.body.insertBefore(this.el,document.body.firstChild);
   };
-
-  	// Variables to keep track of touch movement
+  
+	// Variables to keep track of touch movement
 	let touchY = null;
 
 	// Functions to handle touch events
@@ -210,12 +210,35 @@ function startGame(type, mode) {
 		touchY = null;
 	}
 
-	// Add touch event listeners
-	const pongElement = document.getElementById('main-menu'); // Replace with your Pong element ID
-	pongElement.addEventListener('touchstart', handleTouchStart, { passive: false });
-	pongElement.addEventListener('touchmove', handleTouchMove, { passive: false });
-	pongElement.addEventListener('touchend', handleTouchEnd, { passive: false });
-
+	// Add touch event listeners to the document body
+	document.body.addEventListener('touchstart', handleTouchStart, { passive: false });
+	document.body.addEventListener('touchmove', handleTouchMove, { passive: false });
+	document.body.addEventListener('touchend', handleTouchEnd, { passive: false });
+  
+  // key functions
+  document.onkeydown = function keyMovement(e) {
+    if (gameEnded) return; // completely ignore if the game is over
+	
+	// use key or keyCode depending on what's supported
+	if (e.key) var keyId = e.key.toLowerCase().replace(/arrow/, ''), up = 'up', down = 'down', w = 'w', s = 's', p = 'p';
+	else if (e.keyCode) var keyId = e.which || e.keyCode, up = 38, down = 40, w = 87, s = 83, p = 80;
+	else return domAlert('Error','Sorry, no key identifiers are supported.','<div class="button" onclick="window.location.reload();">OK</div>');
+  
+    if (!paused && keyId == p) pause(), pD();
+    else if (paused && keyId == p) resume(), pD();
+  
+    if (type == 1) return; // we ignore input if the mode is CPU vs CPU
+	
+	// up and down movement keys
+	if (e.shiftKey) {
+	  if (keyId == up || keyId == w) playerControl('up', true), pD();
+	  if (keyId == down || keyId == s) playerControl('down', true), pD();
+	} else {
+	  if (keyId == up || keyId == w) playerControl('up', false), pD();
+	  if (keyId == down || keyId == s) playerControl('down', false), pD();
+	}
+	function pD() { e.preventDefault() }
+  };
   
   document.onkeyup = function() { controls_p1 = 'idle' }
   
