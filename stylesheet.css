@@ -64,10 +64,10 @@ a:hover {
   border-radius:3px;
   padding:3px;
   position:absolute;
-  top:15%;
-  left:30%;
-  right:30%;
-  bottom:15%;
+  top:10%;
+  left:15%;
+  right:15%;
+  bottom:10%;
   overflow-y:auto;
   overflow-x:hidden;
 }
@@ -121,24 +121,26 @@ a:hover {
 }
 
 .row {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 3px 0;
   margin-bottom: 10px; /* Optional: adjust the margin as needed */
 }
 
 .label {
-  display: inline-block;
   text-align: right;
-  width: 150px;
+  width: 50%;
   padding-right: 6px;
+  margin-bottom: 3px;
 }
 
 input.box {
   color: #FFF;
   background: #222;
   border: 1px solid #666;
-  width: 150px;
+  width: 50%;
   padding: 3px;
 }
 
