@@ -195,6 +195,40 @@ function startGame(type, mode) {
   
     if (type == 1) return; // we ignore input if the mode is CPU vs CPU
 	
+	// Add touch event listeners
+	document.addEventListener('touchstart', handleTouchStart, false);
+	document.addEventListener('touchmove', handleTouchMove, false);
+	document.addEventListener('touchend', handleTouchEnd, false);
+
+	// Variables to keep track of touch movement
+	let touchY = null;
+
+	// Functions to handle touch events
+	function handleTouchStart(event) {
+		touchY = event.touches[0].clientY;
+		event.preventDefault();
+	}
+
+	function handleTouchMove(event) {
+		if (!touchY) {
+			return;
+		}
+		const currentY = event.touches[0].clientY;
+		const deltaY = touchY - currentY;
+
+		if (deltaY > 0) {
+			playerControl('up', false);
+		} else {
+			playerControl('down', false);
+		}
+		touchY = currentY;
+		event.preventDefault();
+	}
+
+	function handleTouchEnd() {
+		touchY = null;
+	}
+
 	// up and down movement keys
 	if (e.shiftKey) {
 	  if (keyId == up || keyId == w) playerControl('up', true), pD();
