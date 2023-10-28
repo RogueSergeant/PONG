@@ -179,23 +179,8 @@ function startGame(type, mode) {
 	
 	document.body.insertBefore(this.el,document.body.firstChild);
   };
-  
-  
-  // key functions
-  document.onkeydown = function keyMovement(e) {
-    if (gameEnded) return; // completely ignore if the game is over
-	
-	// use key or keyCode depending on what's supported
-	if (e.key) var keyId = e.key.toLowerCase().replace(/arrow/, ''), up = 'up', down = 'down', w = 'w', s = 's', p = 'p';
-	else if (e.keyCode) var keyId = e.which || e.keyCode, up = 38, down = 40, w = 87, s = 83, p = 80;
-	else return domAlert('Error','Sorry, no key identifiers are supported.','<div class="button" onclick="window.location.reload();">OK</div>');
-  
-    if (!paused && keyId == p) pause(), pD();
-    else if (paused && keyId == p) resume(), pD();
-  
-    if (type == 1) return; // we ignore input if the mode is CPU vs CPU
-	
-	// Add touch event listeners
+
+  	// Add touch event listeners
 	document.addEventListener('touchstart', handleTouchStart, false);
 	document.addEventListener('touchmove', handleTouchMove, false);
 	document.addEventListener('touchend', handleTouchEnd, false);
@@ -226,8 +211,33 @@ function startGame(type, mode) {
 	}
 
 	function handleTouchEnd() {
+		playerControl('idle', false);
 		touchY = null;
 	}
+
+	// Rest of your existing code
+	document.onkeydown = function keyMovement(e) {
+		// Your existing keyboard event handling logic
+	};
+
+	document.onkeyup = function() { 
+		controls_p1 = 'idle';
+	};
+  
+  
+  // key functions
+  document.onkeydown = function keyMovement(e) {
+    if (gameEnded) return; // completely ignore if the game is over
+	
+	// use key or keyCode depending on what's supported
+	if (e.key) var keyId = e.key.toLowerCase().replace(/arrow/, ''), up = 'up', down = 'down', w = 'w', s = 's', p = 'p';
+	else if (e.keyCode) var keyId = e.which || e.keyCode, up = 38, down = 40, w = 87, s = 83, p = 80;
+	else return domAlert('Error','Sorry, no key identifiers are supported.','<div class="button" onclick="window.location.reload();">OK</div>');
+  
+    if (!paused && keyId == p) pause(), pD();
+    else if (paused && keyId == p) resume(), pD();
+  
+    if (type == 1) return; // we ignore input if the mode is CPU vs CPU
 
 	// up and down movement keys
 	if (e.shiftKey) {
