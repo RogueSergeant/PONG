@@ -211,7 +211,7 @@ function startGame(type, mode) {
 	}
 
 	// Add touch event listeners
-	const pongElement = document.getElementById('yourPongElementId'); // Replace with your Pong element ID
+	const pongElement = document.getElementById('main-menu'); // Replace with your Pong element ID
 	pongElement.addEventListener('touchstart', handleTouchStart, { passive: false });
 	pongElement.addEventListener('touchmove', handleTouchMove, { passive: false });
 	pongElement.addEventListener('touchend', handleTouchEnd, { passive: false });
