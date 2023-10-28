@@ -121,8 +121,7 @@ a:hover {
 }
 
 .row {
-  display: flex;
-  align-items: center;
+  display: grid;
   justify-content: center;
   padding: 3px 0;
   margin-bottom: 10px; /* Optional: adjust the margin as needed */
