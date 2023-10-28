@@ -120,20 +120,27 @@ a:hover {
   background:#282828;
 }
 
-.row { padding:3px 0 }
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 0;
+  margin-bottom: 10px; /* Optional: adjust the margin as needed */
+}
+
 .label {
-  display:inline-block;
-  text-align:right;
-  width:150px;
-  padding-right:6px;
+  display: inline-block;
+  text-align: right;
+  width: 150px;
+  padding-right: 6px;
 }
 
 input.box {
-  color:#FFF;
-  background:#222;
-  border:1px solid #666;
-  width:150px;
-  padding:3px;
+  color: #FFF;
+  background: #222;
+  border: 1px solid #666;
+  width: 150px;
+  padding: 3px;
 }
 
 
