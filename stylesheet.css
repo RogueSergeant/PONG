@@ -306,7 +306,7 @@ input.box {
 
 /* gameplay items */
 .paddle {
-  max-width:10px;
+  max-width:21px;
   height:70px;
   position:absolute;
 }

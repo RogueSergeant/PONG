@@ -125,16 +125,18 @@ function startGame(type, mode) {
 		
 		
 		/* -- START paddle hitboxes -- */
-		hitbox(0, 7, 'top-r_X10_Y5', 'top-l_X10_Y5'); 
-		hitbox(7, 14, 'top-r_X10_Y4', 'top-l_X10_Y4');
-		hitbox(14, 21, 'top-r_X10_Y3', 'top-l_X10_Y3');
-		hitbox(21, 28, 'top-r_X10_Y2', 'top-l_X10_Y2');
-		hitbox(28, 35, 'top-r_X10_Y1', 'top-l_X10_Y1');
-		hitbox(35, 42, 'down-r_X10_Y1', 'down-l_X10_Y1');
-		hitbox(42, 49, 'down-r_X10_Y2', 'down-l_X10_Y2');
-		hitbox(49, 56, 'down-r_X10_Y3', 'down-l_X10_Y3');
-		hitbox(56, 63, 'down-r_X10_Y4', 'down-l_X10_Y4');
-		hitbox(63, 70, 'down-r_X10_Y5', 'down-l_X10_Y5');
+		hitbox(0, 7, 'top-r_X10_Y10', 'top-l_X10_Y10'); 
+		hitbox(7, 14, 'top-r_X10_Y8', 'top-l_X10_Y8');
+		hitbox(14, 24, 'top-r_X10_Y6', 'top-l_X10_Y6');
+		hitbox(24, 31, 'top-r_X10_Y4', 'top-l_X10_Y4');
+		hitbox(31, 38, 'top-r_X10_Y2', 'top-l_X10_Y2');
+		hitbox(38, 45, 'top-r_X10_Y1', 'top-l_X10_Y1');
+		hitbox(45, 52, 'down-r_X10_Y1', 'down-l_X10_Y1');
+		hitbox(52, 59, 'down-r_X10_Y2', 'down-l_X10_Y2');
+		hitbox(59, 66, 'down-r_X10_Y4', 'down-l_X10_Y4');
+		hitbox(66, 73, 'down-r_X10_Y6', 'down-l_X10_Y6');
+		hitbox(73, 80, 'down-r_X10_Y8', 'down-l_X10_Y8');
+		hitbox(80, 87, 'down-r_X10_Y10', 'down-l_X10_Y10');
 		/* -- END paddle hitboxes -- */
 		
 		// ball directions
@@ -151,29 +153,29 @@ function startGame(type, mode) {
 		// end refers to the Y-offset we want to stop at e.g. 40px
 		// dir1 and dir2 will be used as arguments in hit(), check the conditions below ;)
 		function hitbox(start, end, dir1, dir2) {
-		  var incY = start;
-          while (incY < end) {
-	        var incX = 0;
-	        while (incX < 16) {
-			  // we subtract 15 from the top of our paddles as the ball is 15 tall
-			  // this will allow us to set a somewhat accurate and larger hitbox
-	          if (bY == getY(player1.el) - 10 + incY && bX == getX(player1.el) + incX) hit(dir1); // player1
-			  if (bY == getY(player2.el) - 10 + incY && bX == getX(player2.el) - incX) hit(dir2); // player2
-		      incX++
-	        }
-	        incY++
-          }
-		  // function to run when a hit is detected, the direction is different depending on the player
-		  function hit(dir) {
-		    chain += 1, incY = 999, incX = 999;
-		    if (speed - chain > 1) chain_speed = speed - chain;
-		    else chain_speed = 1;
-			sfx('hitfx'), clear(), ball.dir(dir), ball.animate(chain_speed), syncUI();
-		  }
-		};
-		function clear() { window.clearInterval(ball_animation) };
-	  },refresh);
-	}
+			var incY = start;
+			while (incY < end) {
+			  var incX = 0;
+			  while (incX < 11) {
+				// we subtract 15 from the top of our paddles as the ball is 15 tall
+				// this will allow us to set a somewhat accurate and larger hitbox
+				if (bY == getY(player1.el) - 10 + incY && bX == getX(player1.el) + incX) hit(dir1); // player1
+				if (bY == getY(player2.el) - 10 + incY && bX == getX(player2.el) - incX) hit(dir2); // player2
+				incX++
+			  }
+			  incY++
+			}
+			// function to run when a hit is detected, the direction is different depending on the player
+			function hit(dir) {
+			  chain += 1, incY = 999, incX = 999;
+			  if (speed - chain > 1) chain_speed = speed - chain;
+			  else chain_speed = 1;
+			  sfx('hitfx'), clear(), ball.dir(dir), ball.animate(chain_speed), syncUI();
+			}
+		  };
+		  function clear() { window.clearInterval(ball_animation) };
+		},refresh);
+		}
 	
 	document.body.insertBefore(this.el,document.body.firstChild);
   };
@@ -258,7 +260,7 @@ function startGame(type, mode) {
       if (controls_p1 == 'down') player1.down();
 	   // adds some boundaries so the player doesn't move off screen
 	  if (getY(player1.el) < 0) player1.setCoords(50,0);
-	  if (getY(player1.el) > wY - 100) player1.setCoords(50,wY - 100);
+	  if (getY(player1.el) > wY - 70) player1.setCoords(50,wY - 70);
 	}
   };
   
@@ -287,10 +289,10 @@ function startGame(type, mode) {
 		
 	  if (o==player2) {
 	    if (getY(o.el) < 0) o.setCoords(wX - 65,0);
-	    if (getY(o.el) > wY - 100) o.setCoords(wX - 65,wY - 100);
+	    if (getY(o.el) > wY - 70) o.setCoords(wX - 65,wY - 70);
 	  } else if (o==player1) {
 	    if (getY(o.el) < 0) o.setCoords(50,0);
-	    if (getY(o.el) > wY - 100) o.setCoords(50,wY - 100);
+	    if (getY(o.el) > wY - 70) o.setCoords(50,wY - 70);
 	  }
 	};
 	
