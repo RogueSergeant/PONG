@@ -306,21 +306,21 @@ input.box {
 
 /* gameplay items */
 .paddle {
-  max-width:30px;
-  height:100px;
+  max-width:10px;
+  height:70px;
   position:absolute;
 }
 
 .ball, #ball {
   position:absolute;
-  width:15px;
-  height:15px;
+  width:10px;
+  height:10px;
 }
 
 .customBall, #customBall {
   position:absolute;
-  width:15px;
-  height:15px;
+  width:10px;
+  height:10px;
   -webkit-animation:spin 250ms linear infinite;
           animation:spin 250ms linear infinite;
 }
@@ -337,7 +337,7 @@ input.box {
 
 /* customization preview */
 #preview {
-  height:100px;
+  height:70;
   position:relative;
   background:#000;
 }
